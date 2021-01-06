@@ -7,6 +7,7 @@ RH_ASK RF_driver(5000, RF_RX_PIN, RF_TX_PIN, 0);
 
 void setup() {
     Serial.begin(115200);
+    delay(5000);
     Serial.setDebugOutput(true);
     if (RF_driver.init()) {
         Serial.println("RF init started!");
@@ -29,6 +30,6 @@ void loop() {
     RF_driver.send((uint8_t *)msg, strlen(msg));
     RF_driver.waitPacketSent();
     Serial.println("RF packet: sent!");
-    delay(200);
+    delay(5000);
 
 }
