@@ -15,21 +15,18 @@ void setup() {
         Serial.println("RF init failed!");
     }
 }
-
 unsigned long _cont = 0;
 uint8_t RF_messageReceived[RH_ASK_MAX_MESSAGE_LEN];
 uint8_t RF_messageReceived_len;
 
-void loop() {
-    char msg[27];
+void loop()
+{
+  RF_messageReceived_len = sizeof(RF_messageReceived);
 
-    sprintf(msg, "valor: %ld", _cont++);
-
-    Serial.print("RF packet: sending...");
-    Serial.println(msg);
-    RF_driver.send((uint8_t *)msg, strlen(msg));
-    RF_driver.waitPacketSent();
-    Serial.println("RF packet: sent!");
-    delay(5000);
+  if (RF_driver.recv(RF_messageReceived, &RF_messageReceived_len))
+  {
+    Serial.printf("RF packet receive [%d bytes]: ", RF_messageReceived_len);
+    Serial.println((char *)RF_messageReceived);
+  }
 
 }
