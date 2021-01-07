@@ -15,10 +15,10 @@ void setup() {
         Serial.println("RF init failed!");
     }
 }
-unsigned long _cont = 0;
 
 void loop() {
  
+  unsigned long _cont = 0;
   uint8_t RF_messageReceived[RH_ASK_MAX_MESSAGE_LEN];
   uint8_t RF_messageReceived_len = sizeof(RF_messageReceived);
 

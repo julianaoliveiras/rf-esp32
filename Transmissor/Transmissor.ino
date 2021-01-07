@@ -25,7 +25,7 @@ void loop(){
     unsigned long _cont = 0;
     char msg[27];
     
-    sprintf(msg, "valor: %ld", _cont++);
+    sprintf(msg, "value: %ld", _cont++);
     Serial.println("RF packet: sending...");
     Serial.println(msg);
     RF_driver.send((uint8_t *)msg, strlen(msg));
